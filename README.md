@@ -6,10 +6,17 @@ Code and documentation files for testApp.
 
 This testApp is develop for the purpose of show casing the level of skill that Jose has as a developer.
 
-Project was developed with the follwoing things in mind:
+This is a simple quiz where user enters his name, picks a test, gives the
+answers and finally gets the results.
 
-  * Object Oriented Programing principles.
-  * Model, View, and Controller.
+The technologies that were used are: PHP, MySQL, HTML, CSS, JavaScript. PHP
+code is object oriented. (No PHP framework was used)
+
+The quiz consists of 3 main views:
+  1. Index page. User must enter his name and choose one of many available tests.
+  2. Quiz view. A question is shown to the user and he must choose one answer. One
+question can have 2 to n answers.
+  3. Results page.
 
 If you would like to set up this project in your own development enviroment, please do the following:
 
