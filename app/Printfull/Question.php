@@ -26,9 +26,14 @@ class Question extends Model
         return parent::pdo()->query('SELECT q.question, q.id FROM questions_per_tests as q WHERE q.id ='.$testId)->fetch();
     }
 
-    public static function save(int $userId, int $test_id, int $questionId, ?int $points)
+    public static function save(int $userId, int $testId, int $questionId, ?int $points)
     {
-        parent::pdo()->query("INSERT INTO test_per_users (user_id, test_id, question_id, points, created_at) VALUES ($userId, $test_id, $questionId, $points, NOW())");
+        $statement = parent::pdo()->prepare("INSERT INTO test_per_users (user_id, test_id, question_id, points, created_at) VALUES (:userId, :testId, :questionId, :points, NOW())");
+        $statement->bindParam(':userId', $userId);
+        $statement->bindParam(':testId', $testId);
+        $statement->bindParam(':questionId', $questionId);
+        $statement->bindParam(':points', $points);
+        $statement->execute();
     }
 
     public static function totalScore(int $userId)
