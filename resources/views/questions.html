@@ -1,0 +1,43 @@
+<?php $percentage .= '%' ?>
+
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: <?= $percentage ?>;
+  height: 30px;
+  background-color: blue;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
+
+<div class="container">
+  <h1><?= $questionTitleAndId[0] ?></h1>
+  <div class="card-deck mb-12 text-center">
+
+    <?php foreach($results as $row): ?>
+
+    <form class="card mb-4 shadow-sm" method="POST" action="">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal"><?= $row[0] ?></h4>
+      </div>
+      <div class="card-body">
+        <button type="submit" class="btn btn-lg btn-block btn-primary">Pick</button>
+        <input type="hidden" name="points" value="<?= $row[1] ?>">
+        <input type="hidden" name="questionId" value="<?= $questionTitleAndId[1] ?>">
+      </div>
+    </form>
+
+    <?php endforeach; ?>
+
+  <div id="myProgress">
+    <div id="myBar"><?= $percentage ?></div>
+  </div>
+
+  </div>
+</div>
